@@ -11,36 +11,42 @@ body, html {
 }
 
 .layer1 {
-    background-image: url("1.jpg");
     height: 100%;
     width: 100%;
     z-index: 1;
     position: absolute;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    overflow: hidden;
+}
+
+.image1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .layer2 {
-    width: 1200px;
-    height: 1200px;
+    width: 85%;
+    height: calc(2 * 85%);
     border-radius: 50%;
     border-width: 1px;
     border-style: solid;
     border-color: #ffffff;
     position: absolute;
     z-index: 2;
-    top: -42%;
-    left: 5%;
-    right: 5%;
-    margin: auto;
-    background-image: url("1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 115%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
 }
 
-.layer2::before {
+.image2 {
+    transform: scale(1.17);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.layer2::after {
     content: "";
     position: absolute;
     top: 0;
@@ -52,35 +58,25 @@ body, html {
 }
 
 .layer3 {
-    width: 620px;
-    height: 620px;
+    width: 45%;
+    height: calc(2 * 45%);
     border-radius: 50%;
     border-width: 1px;
     border-style: solid;
     border-color: #ffffff;
     position: absolute;
     z-index: 3;
-    top: 2%;
-    left: 5%;
-    right: 5%;
-    margin: auto;
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-    background-image: url("1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 225%;
-}
-
-.h1 {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.image3 {
+    transform: scale(1.32);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .itsabutton {
@@ -97,7 +93,7 @@ body, html {
     cursor: pointer;
 }
 
-@keyframes rotateZoomLayer1 {
+@keyframes rotateZoomImg1 {
     0% {
         transform: rotate(0deg) scale(9);
     }
@@ -106,32 +102,32 @@ body, html {
     }
 }
 
-.rotate-zoom-layer-1 {
-    animation: rotateZoomLayer1 2s forwards;
+.rotate-zoom-img-1 {
+    animation: rotateZoomImg1 2s forwards;
 }
 
-@keyframes rotateZoomLayer2 {
+@keyframes rotateZoomImg2 {
     0% {
-        transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1.17);
     }
     100% {
-        transform: rotate(360deg) scale(1);
+        transform: rotate(360deg) scale(1.17);
     }
 }
 
-.rotate-zoom-layer-2 {
-    animation: rotateZoomLayer2 2s forwards;
+.rotate-zoom-img-2 {
+    animation: rotateZoomImg2 2s forwards;
 }
 
-@keyframes rotateZoomLayer3 {
+@keyframes rotateZoomImg3 {
     0% {
-        transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1.32);
     }
     100% {
-        transform: rotate(360deg) scale(1);
+        transform: rotate(360deg) scale(1.32);
     }
 }
 
-.rotate-zoom-layer-3 {
-    animation: rotateZoomLayer3 2s forwards;
+.rotate-zoom-img-3 {
+    animation: rotateZoomImg3 2s forwards;
 }
