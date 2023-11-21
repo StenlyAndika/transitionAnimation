@@ -11,12 +11,25 @@
             overflow: hidden;
         }
 
-        .layer1 {
-            background-image: url("1.jpg");
+        .container {
             height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-color: #3498db;
+            margin: 0;
+            position: relative;
+        }
+
+        .layer1 {
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            position: absolute;
+            overflow: hidden;
+        }
+
+        .layer1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .layer2 {
@@ -27,15 +40,11 @@
             border-style: solid;
             border-color: #ffffff;
             position: absolute;
-            z-index: 1;
-            top: -42%;
-            left: 5%;
-            right: 5%;
-            margin: auto;
-            background-image: url("1.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 115%;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
         }
 
         .layer2::before {
@@ -49,28 +58,46 @@
             border-radius: 50%;
         }
 
+        .layer2 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         .layer3 {
-            width: 45%;
-            height: 95%;
+            width: 620px;
+            height: 620px;
             border-radius: 50%;
             border-width: 1px;
             border-style: solid;
             border-color: #ffffff;
             position: absolute;
+            z-index: 3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+        .layer3 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .h1 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
             z-index: 1;
-            top: 2%;
-            left: 5%;
-            right: 5%;
-            margin: auto;
-            background-image: url("1.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 235%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .itsabutton {
             position: absolute;
-            z-index: 1;
+            z-index: 4;
             bottom: 5%;
             right: 5%;
             background-color: #3498db;
@@ -82,7 +109,7 @@
             cursor: pointer;
         }
 
-        @keyframes rotateZoomLayer1 {
+        @keyframes rotateZoomImg1 {
             0% {
                 transform: rotate(0deg) scale(9);
             }
@@ -91,11 +118,11 @@
             }
         }
 
-        .rotate-zoom-layer-1 {
-            animation: rotateZoomLayer1 2s forwards;
+        .rotate-zoom-img-1 {
+            animation: rotateZoomImg1 2s forwards;
         }
 
-        @keyframes rotateZoomLayer2 {
+        @keyframes rotateZoomImg2 {
             0% {
                 transform: rotate(0deg) scale(1);
             }
@@ -104,11 +131,11 @@
             }
         }
 
-        .rotate-zoom-layer-2 {
-            animation: rotateZoomLayer2 2s forwards;
+        .rotate-zoom-img-2 {
+            animation: rotateZoomImg2 2s forwards;
         }
 
-        @keyframes rotateZoomLayer3 {
+        @keyframes rotateZoomImg3 {
             0% {
                 transform: rotate(0deg) scale(1);
             }
@@ -117,62 +144,68 @@
             }
         }
 
-        .rotate-zoom-layer-3 {
-            animation: rotateZoomLayer3 2s forwards;
+        .rotate-zoom-img-3 {
+            animation: rotateZoomImg3 2s forwards;
         }
     </style>
 </head>
 <body>
-    <div class="layer1"></div>
-    <div class="layer2"></div>
-    <div class="layer3"></div>
+    <div class="container">
+        <div class="layer1">
+            <img src="1.jpg" alt="" class="img1">
+        </div>
+        <div class="layer2">
+            <img src="1.jpg" alt="" class="img2">
+        </div>
+        <div class="layer3">
+            <img src="1.jpg" alt="" class="img3">
+        </div>
+    </div>
     <button type="button" class="itsabutton" onclick="rotateAndZoom()">Klik Aquww</button>
     <script>
         let clickCounter = 0;
-
         function rotateAndZoom() {
-            const layer1 = document.querySelector('.layer1');
-            const layer2 = document.querySelector('.layer2');
-            const layer3 = document.querySelector('.layer3');
+            const img1 = document.querySelector('.img1');
+            const img2 = document.querySelector('.img2');
+            const img3 = document.querySelector('.img3');
 
-            layer1.classList.remove('rotate-zoom-layer-1');
-            layer2.classList.remove('rotate-zoom-layer-2');
-            layer3.classList.remove('rotate-zoom-layer-3');
+            img1.classList.remove('rotate-zoom-img-1');
+            img2.classList.remove('rotate-zoom-img-2');
+            img3.classList.remove('rotate-zoom-img-3');
 
             clickCounter++;
-            // const backgroundImage = clickCounter % 2 === 0 ? '1.jpg' : '2.jpg';
             const currentImageNumber = clickCounter % 4;
             const backgroundImage = `${currentImageNumber + 1}.jpg`;
-            layer1.style.backgroundImage = `url("${backgroundImage}")`;
-            layer2.style.backgroundImage = `url("${backgroundImage}")`;
-            layer3.style.backgroundImage = `url("${backgroundImage}")`;
+            img3.src = backgroundImage;
 
-            // Rotate layer3 first
-            layer3.classList.add('rotate-zoom-layer-3');
+            // Rotate img3 first
+            img3.classList.add('rotate-zoom-img-3');
 
-            // After a delay, rotate layer2
+            // After a delay, rotate img2
             setTimeout(() => {
-                layer2.classList.add('rotate-zoom-layer-2');
+                img2.src = backgroundImage;
+                img2.classList.add('rotate-zoom-img-2');
             }, 200);
 
-            // After a delay, rotate layer1
+            // After a delay, rotate img1
             setTimeout(() => {
-                layer1.classList.add('rotate-zoom-layer-1');
+                img1.src = backgroundImage;
+                img1.classList.add('rotate-zoom-img-1');
             }, 200);
 
-            // Listen for the end of the animation on layer3
-            layer3.addEventListener('animationend', function() {
-                layer3.classList.remove('rotate-zoom-layer-3');
+            // Listen for the end of the animation on img3
+            img3.addEventListener('animationend', function() {
+                img3.classList.remove('rotate-zoom-img-3');
             }, { once: true });
 
-            // Listen for the end of the animation on layer2
-            layer2.addEventListener('animationend', function() {
-                layer2.classList.remove('rotate-zoom-layer-2');
+            // Listen for the end of the animation on img2
+            img2.addEventListener('animationend', function() {
+                img2.classList.remove('rotate-zoom-img-2');
             }, { once: true });
 
-            // Listen for the end of the animation on layer
-            layer1.addEventListener('animationend', function() {
-                layer1.classList.remove('rotate-zoom-layer-1');
+            // Listen for the end of the animation on img1
+            img1.addEventListener('animationend', function() {
+                img1.classList.remove('rotate-zoom-img-1');
             }, { once: true });
         }
     </script>
