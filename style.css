@@ -1,0 +1,134 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    height: 100%;
+    margin: 0;
+    position: relative;
+}
+
+.layer1 {
+    background-image: url("1.jpg");
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.layer2 {
+    width: 1200px;
+    height: 1200px;
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+    position: absolute;
+    z-index: 2;
+    top: -42%;
+    left: 5%;
+    right: 5%;
+    margin: auto;
+    background-image: url("1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 115%;
+}
+
+.layer2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
+
+.layer3 {
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+    position: absolute;
+    z-index: 3;
+    top: 2%;
+    left: 5%;
+    right: 5%;
+    margin: auto;
+    background-image: url("1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 225%;
+}
+
+.h1 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.itsabutton {
+    position: absolute;
+    z-index: 4;
+    bottom: 5%;
+    right: 5%;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes rotateZoomLayer1 {
+    0% {
+        transform: rotate(0deg) scale(9);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.rotate-zoom-layer-1 {
+    animation: rotateZoomLayer1 2s forwards;
+}
+
+@keyframes rotateZoomLayer2 {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.rotate-zoom-layer-2 {
+    animation: rotateZoomLayer2 2s forwards;
+}
+
+@keyframes rotateZoomLayer3 {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.rotate-zoom-layer-3 {
+    animation: rotateZoomLayer3 2s forwards;
+}
