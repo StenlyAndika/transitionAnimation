@@ -1,10 +1,11 @@
 let clickCounter = 0;
 let currentTextIndex = 0;
 let texts = [
-    "LAGO DI BRAIES<br>ITALY",
-    "LAKE LUNGERN<br>SWITZERLAND",
-    "PYRAMID LAKE<br>NEVADA",
-    "WELKOM<br>TU MAI WEBSITE"
+    "BRAIES LAKE<br>ITALY",
+    "LUNGERN LAKE<br>SWITZERLAND",
+    "WAKATIPU LAKE<br>NEW ZEALAND",
+    "BENCH LAKE<br>UNITED STATES",
+    "BEAUTIFUL LAKES<br>AROUND THE WORLD"
 ];
 
 function addSpaceBetweenLetters(text) {
@@ -16,6 +17,9 @@ function addSpaceBetweenLetters(text) {
 }
 
 function rotateAndZoom() {
+    const btn = document.querySelector('.itsabutton');
+    btn.style.visibility = 'hidden';
+
     const img1 = document.querySelector('.image1');
     const img2 = document.querySelector('.image2');
     const img3 = document.querySelector('.image3');
@@ -27,7 +31,7 @@ function rotateAndZoom() {
     img3.classList.remove('rotate-zoom-img-3');
 
     clickCounter++;
-    const currentImageNumber = clickCounter % 4;
+    const currentImageNumber = clickCounter % 5;
     const backgroundImage = `${currentImageNumber + 1}.jpg`;
     img3.src = backgroundImage;
     txtH.classList.add('blurred');
@@ -57,5 +61,6 @@ function rotateAndZoom() {
     img1.addEventListener('animationend', function() {
         img1.classList.remove('rotate-zoom-img-1');
         txtH.classList.remove('blurred');
+        btn.style.visibility = 'visible';
     }, { once: true });
 }
