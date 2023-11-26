@@ -56,7 +56,7 @@ function rotateAndZoom() {
     setTimeout(() => {
         img1.src = backgroundImage;
         img1.classList.add('rotate-zoom-img-1');
-    }, 200);
+    }, 400);
 
     img1.addEventListener('animationend', function() {
         img1.classList.remove('rotate-zoom-img-1');
